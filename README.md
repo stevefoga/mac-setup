@@ -12,9 +12,7 @@ macOS Big Sur (11.1)
 
 ## System Preferences
 
-After the initial setup the always [install all available updates](https://support.apple.com/guide/mac-help/get-macos-updates-mchlpx1065/mac).
-
-The following are some opinionated [System Preferences]().
+After the initial setup always [install all available updates](https://support.apple.com/guide/mac-help/get-macos-updates-mchlpx1065/mac).
 
 ### General
 
@@ -106,9 +104,14 @@ Host *
 
 [Homebrew](https://brew.sh/) is the package manager for MacOS (think apt-get, ...).
 
+#### Installation
+
+1) Make sure Rosetta is installed:  
+`softwareupdate --install-rosetta` 
+
+2) Install Homebrew using Rosetta:  
 `arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 
-- Generally prefer installing anything/everything w/ `brew ...` over package installers.
 
 ### Hack Font
 
@@ -153,5 +156,5 @@ git config --global pull.rebase true
 #### Installation
 `brew install --cask anaconda`
 
-and add to `~/.zshrc`:
+and add to `~/.zshrc`:  
 `export PATH="/usr/local/anaconda3/bin:$PATH"`
