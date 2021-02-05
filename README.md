@@ -2,11 +2,11 @@
 
 This README and associated scripts are information for setting up a mac for my opinionated developer environment. I only do this once every couple years so many things here may go stale between updates. It's mostly a reference.
 
-Last tested 01/31/2021 on the following:
+Last tested 02/05/2021 on the following:
 
 ```
-MacBook Pro (13-inch, 2017, Two Thunderbolt 3 ports)
-2.3 GHz Dual-Core Intel Core i5
+MacBook Pro (13-inch, M1, 2021)
+Apple M1
 macOS Big Sur (11.1)
 ```
 
@@ -22,11 +22,11 @@ The following are some opinionated [System Preferences]().
 
 ### Desktop & Screen Saver
 
-- Set Hot Corners (via Screen Saver) to Bottom-Right -> Lock Screen.
+- Set Hot Corners (via Screen Saver) to Bottom-Right -> Launchpad; Bottom-Left -> Desktop.
 
 ### Dock & Menu Bar
 
-- Position -> Left
+- Position -> Center
 - Adjust size to be smaller
 - Disable magnification
 - Enable Automatically Hide & Show Dock
@@ -43,30 +43,23 @@ The following are some opinionated [System Preferences]().
   - Allow install from App Store & Identified Developers
 - FileVault -> Enable
 - Firewall -> Enable
-  - Block all incoming connections
 
 ### Keyboard
 
 - Key Repeat -> Fastest
 - Delay Until Repeat -> Shortest
-- Modifier Keys (Repeat for all keyboards)
-  - Caps Lock -> Control
-  - Control -> Control
-  - Option -> Option
-  - Command -> Command
-  - Function -> Function
 
 ### Trackpad
 
 - Point & Click
-  - Disable "Look up & data detectors"
+  - Enable Tap to click
   - Click -> Medium
   - Tracking speed -> Fast
   - Enable Force Click and haptic feedback
 
 ### Sharing
 
-- Computer Name -> Something Useful (e.g. `kpurdon-work`)
+- Computer Name -> Something Useful (e.g. `stevenfoga-mbp`)
 
 ### Screenshots
 
@@ -90,7 +83,7 @@ This is basically a requirement for a million things installed on macs, so insta
 
 - Generate a new SSH key (if `~/.ssh/id_rsa` doesn't exist)
 
-`yes | ssh-keygen -t rsa -b 4096 -C "kylepurdon@gmail.com" -N "" -f ~/.ssh/id_rsa`
+`yes | ssh-keygen -t rsa -b 4096 -C "steve.foga@gmail.com" -N "" -f ~/.ssh/id_rsa`
 
 - Add the SSH key to the Keychain
 
@@ -113,7 +106,7 @@ Host *
 
 [Homebrew](https://brew.sh/) is the package manager for MacOS (think apt-get, ...).
 
-`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+`arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 
 - Generally prefer installing anything/everything w/ `brew ...` over package installers.
 
@@ -133,7 +126,7 @@ brew install homebrew/cask-fonts/font-hack
 
 #### Configuration
 
-TODO: export current config as file to save/import
+- Change hotkey set to Natural Text Editing (Preferences > Profile > Keys > Presets... > Natural Text Editing)
 
 ### Rectangle
 
@@ -141,116 +134,24 @@ TODO: export current config as file to save/import
 
 `brew install --cask rectangle`
 
-### Bash
-
-The version of bash that comes w/ MacOS is often pretty outdated. Install bash from brew and set it as the default shell.
-
-```
-brew install bash
-echo /usr/local/bin/bash | sudo tee -a /etc/shells
-chsh -s /usr/local/bin/bash
-```
-
-#### Configuration/Profile
-
-TODO: export current config as a file to save/import
 
 ### Git
-
-The version  of git that comes w/ MacOS is often pretty outdated. Install from brew.
-
-```
-brew install git
-```
 
 #### Configuration
 
 ```
-git config --global user.name "Kyle Purdon"
-git config --global user.email kylepurdon@gmail.com
-git config --global username kpurdon
-git config --global core.editor emacs
+git config --global user.name "Steve Foga"
+git config --global user.email steve.foga@gmail.com
+git config --global username stevefoga
+git config --global core.editor vim
 git config --global help.autocorect 1
 git config --global pull.rebase true
 ```
 
-#### GPG Signing
-
-If you use commit signing, follow these instructions.
-
-https://docs.github.com/en/github/authenticating-to-github/signing-commits
-https://docs.github.com/en/github/authenticating-to-github/generating-a-new-gpg-key
-https://docs.github.com/en/github/authenticating-to-github/telling-git-about-your-signing-key
-
-### Python
-
-The easiest way to manage/install multiple Python version is using [pyenv](https://github.com/pyenv/pyenv). The [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv) pieces below are not required but highly reccomended if you use virtualenvs.
-
-#### Before Installing Pyenv
-
-https://github.com/pyenv/pyenv/wiki#suggested-build-environment
-
-`brew install openssl readline sqlite3 xz zlib`
+### Python (Anaconda)
 
 #### Installation
+`brew install --cask anaconda`
 
-`brew install pyenv pyenv-virtualenv`
-
-Generally this will guide you through the setup, but make sure the following end up in `~/.bash_profile`.
-
-```
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-```
-
-#### Pyenv Basics
-
-```
-pyenv install 3.9.1 # install a specific version
-pyenv global 3.9.1  # set the global version to be used in all shells
-pyenv shell 3.9.1   # set the version for the active shell
-pyenv local 3.9.1   # add a .python-version file to the current directory
-```
-
-#### Pyenv Virtualenv Basics
-
-```
-pyenv virtualenv 3.9.1 # create a virtualenv
-pyenv activate <name>  # activate a virtualenv
-pyenv deactivate       # deactivate a virtualenv
-```
-
-Of note if a `.python-version` file is present the virtualenv will be automatically activated and deactivated upon entry/exit from that directory.
-
-### Go
-
-`brew install go`
-
-### Chrome
-
-`brew install chrome`
-
-### Gitify
-
-[Gitify](https://www.gitify.io/) is a really handy git notifications app.
-
-`brew install gitify`
-
-### Docker
-
-**Warning** (for M1 see https://docs.docker.com/docker-for-mac/apple-m1/)
-
-`brew install docker`
-
-### Emacs
-
-Install [Emacs for MacOS](https://emacsformacosx.com/) and pull down custom configuration.
-
-```
-brew install --cask ispell emacs
-pushd $HOME
-rm -rf .emacs.d
-git clone git@github.com:kpurdon/.emacs.d.git
-touch custom.el
-popd
-```
+and add to `~/.zshrc`:
+`export PATH="/usr/local/anaconda3/bin:$PATH"`
