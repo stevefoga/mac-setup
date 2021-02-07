@@ -9,6 +9,9 @@ MacBook Pro (13-inch, M1, 2021)
 Apple M1
 macOS Big Sur (11.1)
 ```
+## TODO
+- Move to Python 3.9 (ARM support)
+- Move to [Homebrew 3.0.0](https://brew.sh/2021/02/05/homebrew-3.0.0/) (ARM support)
 
 ## System Preferences
 
