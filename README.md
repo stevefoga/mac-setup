@@ -11,7 +11,6 @@ macOS Big Sur (11.1)
 ```
 ## TODO
 - Move to Python 3.9 (ARM support)
-- Move to [Homebrew 3.0.0](https://brew.sh/2021/02/05/homebrew-3.0.0/) (ARM support)
 
 ## System Preferences
 
@@ -140,6 +139,18 @@ brew install homebrew/cask-fonts/font-hack
 
 `brew install --cask rectangle`
 
+### Sublime Text
+
+[Sublime Text](https://www.sublimetext.com/) is a cross-platform interactive text edior. 
+
+`brew install --cask sublime-text`
+
+
+#### Configuration
+
+In `Sublime Text > Preferences > Settings`, add:
+- `"open_files_in_new_window": false,`  
+
 
 ### Git
 
@@ -155,9 +166,17 @@ git config --global pull.rebase true
 ```
 
 ### Python (Anaconda)
-
-#### Installation
-`brew install --cask anaconda`
+`brew install --cask anaconda` 
 
 and add to `~/.zshrc`:  
-`export PATH="/usr/local/anaconda3/bin:$PATH"`
+`export PATH="/usr/local/anaconda3/bin:$PATH"` 
+
+### wget
+`arch -x86_64 brew install wget` 
+
+### doxygen
+`arch -x86_64 brew install doxygen` 
+
+
+
+
