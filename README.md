@@ -177,6 +177,10 @@ and add to `~/.zshrc`:
 ### doxygen
 `arch -x86_64 brew install doxygen` 
 
+### FFmpeg
+1) Install FFmpeg 4.3.2 (With ARM Neon patch) from https://www.osxexperts.net/.
+2) Extract .zip archive.
+3) Invoke `ffmpeg` binary directly from command line.
 
-
-
+#### Example command
+`~/Downloads/ffmpeg -r 30 -start_number 001 -i %3d.JPG -vcodec libx264 -threads 8 30fps.mp4`
