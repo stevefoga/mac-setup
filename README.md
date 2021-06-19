@@ -168,8 +168,11 @@ git config --global pull.rebase true
 ### Python (Anaconda)
 `brew install --cask anaconda` 
 
-and add to `~/.zshrc`:  
+- add to `~/.zshrc`:  
 `export PATH="/usr/local/anaconda3/bin:$PATH"` 
+
+- disable default `base` library from loading in the command line: 
+`conda config --set auto_activate_base false`
 
 ### wget
 `arch -x86_64 brew install wget` 
